@@ -14,8 +14,7 @@ export const addCostToProduct = (productId, costData) =>
   axios
     .post(`${VITE_API_URL}/api/products/${productId}/costs`, costData, {
       headers: { Authorization: `Bearer ${token}` },
-    }
-    )
+    })
     .then((response) => response.data);
 
 export const deleteCostFromProduct = (productId, costId) =>
@@ -28,6 +27,20 @@ export const deleteCostFromProduct = (productId, costId) =>
 export const updateCostInProduct = (productId, costId, costData) =>
   axios
     .put(`${VITE_API_URL}/api/products/${productId}/costs/${costId}`, costData, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => response.data);
+
+export const deleteProductById = (id) =>
+  axios
+    .delete(`${VITE_API_URL}/api/products/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => response.data);
+
+export const getProducts = () =>
+  axios
+    .get(`${VITE_API_URL}/api/products`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => response.data);

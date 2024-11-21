@@ -33,6 +33,10 @@ const ProductList = () => {
       });
   }, []);
 
+  const handleDelete = (deletedProductId) => {
+    setProducts(products.filter((product) => product._id !== deletedProductId));
+  };
+
   if (error) {
     return <div>Error loading products: {error}</div>;
   }
@@ -44,7 +48,7 @@ const ProductList = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {products && products.map((product) => (
-        <ProductCard key={product._id} product={product} />
+        <ProductCard key={product._id} product={product} onDelete={handleDelete} />
       ))}
     </div>
   );
