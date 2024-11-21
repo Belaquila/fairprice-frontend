@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   getProductById,
   addCostToProduct,
@@ -10,6 +10,7 @@ import ProductDetails from "../components/ProductDetails";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -36,8 +37,15 @@ const ProductDetailsPage = () => {
       .catch((error) => console.error("Error deleting cost:", error));
   };
 
+  const handleBack = () => {
+    navigate('/products');
+  };
+
   return (
     <div>
+      <button onClick={handleBack}>
+        Back
+      </button>
       {product ? (
         <ProductDetails
           product={product}

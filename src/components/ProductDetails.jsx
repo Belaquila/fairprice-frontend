@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CostList from "./CostList";
+import { getAllCosts } from "../api/costApi";
 
 const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [newCost, setNewCost] = useState({ costId: "", quantity: "", unit: "" });
+  const [availableCosts, setAvailableCosts] = useState([]);
+
+  useEffect(() => {
+    getAllCosts()
+      .then((data) => setAvailableCosts(data))
+      .catch((error) => console.error("Error fetching costs:", error));
+  }, []);
 
   const handleAddCost = () => {
     onAddCost(newCost);
@@ -24,15 +32,20 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
           onDelete={onDeleteCost}
         />
         <div className="mt-4">
-          <input
-            type="text"
-            placeholder="Cost ID"
+          <select
             value={newCost.costId}
             onChange={(e) =>
               setNewCost((prev) => ({ ...prev, costId: e.target.value }))
             }
             className="border p-1 rounded mr-2"
-          />
+          >
+            <option value="">Select Cost</option>
+            {availableCosts.map((cost) => (
+              <option key={cost._id} value={cost._id}>
+                {cost.name}
+              </option>
+            ))}
+          </select>
           <input
             type="number"
             placeholder="Quantity"

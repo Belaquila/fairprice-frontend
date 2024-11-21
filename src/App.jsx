@@ -10,6 +10,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage';
 
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
+import AddProductPage from './pages/AddProductPage';
 
 function App() {
 
@@ -31,9 +32,10 @@ function App() {
             <ProductDetailsPage />
             </IsPrivate>}
           />
+          <Route path="/products/create" element={<AddProductPage />} />
           {/*
           <Route path="/products/edit/:productId" element={<ProductEditPage />} />
-          <Route path="/products/create" element={<ProductCreatePage />} />
+          
           
           <Route
             path="/profile"
