@@ -1,4 +1,3 @@
-
 import './css/App.css'
 import LandingPage from './pages/LandingPage'
 import MainFooter from './components/MainFooter'
@@ -9,70 +8,49 @@ import ProductListPage from './pages/ProductListPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import AddProductPage from './pages/AddProductPage';
 import Header from './components/Header';
+import AppContainer from './components/AppContainer';
 
-import Sidebar from './components/Sidebar';
 import { useState } from 'react';
 
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
+import { AuthContext } from './context/auth.context';
+import { useContext } from 'react';
+import SideMenu from './components/Sidemenu';
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+  const handleDrawerToggle = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+
+  console.log("draweer open", isDrawerOpen);
+  
   return (
     <>
 
-      {/* <LandingPage></LandingPage> */}
+      <Header/>
+      {isLoggedIn && <SideMenu isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen} onToggle={handleDrawerToggle}/>}
 
-
-      <Header />
-
-
-      {/*<NavBar toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-      {isSidebarOpen && <Sidebar />}*/}
-
-      <div
-        className={`content ${isSidebarOpen ? "shifted" : ""} relative z-10`}
-      >
-
+      <AppContainer isDrawerOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
+        
+      <div className="relative flex-grow pt-16">
         <Routes>
-          
-          <Route path="/products" element={
-            <IsPrivate>
-              <ProductListPage />
-            </IsPrivate>
-          } />
-
-          <Route
-            path="/products/:id"
-            element={
-              <IsPrivate>
-                <ProductDetailsPage />
-              </IsPrivate>}
-          />
-
-          <Route path="/products/create" element={<AddProductPage />} />
-
-          <Route
-            path="/login"
-            element={
-              <IsAnon>
-                <LoginPage />
-              </IsAnon>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <IsAnon>
-                <SignupPage />
-              </IsAnon>
-            }
-          />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/products" element={<IsPrivate><ProductListPage /></IsPrivate>} />
+          <Route path="/products/:id" element={<IsPrivate><ProductDetailsPage /></IsPrivate>} />
+          <Route path="/products/create" element={<IsPrivate><AddProductPage /></IsPrivate>} />
+          <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
+          <Route path="/signup" element={<IsAnon><SignupPage /></IsAnon>} />
         </Routes>
-
       </div>
-      <MainFooter />
+      </AppContainer>
+
+      <MainFooter className=""/>
 
     </>
   )

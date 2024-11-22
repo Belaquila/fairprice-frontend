@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function MainFooter() {
   
   return (
-    <Footer id="footer" container >
+    <Footer id="footer" >
 
       <Footer.Copyright by="FairPrice™" year={2024} 
       
@@ -15,7 +15,7 @@ function MainFooter() {
             <NavLink to="/about">About</NavLink>
         </Footer.Link>
         <Footer.Link >
-            <NavLink to="../index.html">Privacy Policy</NavLink>
+            <NavLink to="/about">Privacy Policy</NavLink>
         </Footer.Link>
         <Footer.Link >
             <NavLink to="https://github.com/Belaquila/fairprice-backend">Github</NavLink>

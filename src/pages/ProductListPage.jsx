@@ -12,7 +12,9 @@ const ProductListPage = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold text-center mb-4">Product List</h1>
-      <button onClick={handleCreateProduct}>
+      <button onClick={handleCreateProduct}
+      className="absolute top-0 right-0 mt-4 mr-4"
+      >
         Create product
       </button>
       <ProductList />

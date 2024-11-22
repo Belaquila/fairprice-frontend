@@ -1,13 +1,12 @@
 import React from "react";
 import { Button } from "flowbite-react";
-import NavBar from "../components/Header"
+
 
 const LandingPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       
-      {/* Navbar, present only in the landing page. If user connected, they see a side bar*/}
-      <NavBar />
+
 
       {/* Main Content */}
       <main className="flex-grow bg-gray-100 py-10">
@@ -24,7 +23,7 @@ const LandingPage = () => {
         </div>
       </main>
   
-      <MainFooter/>
+
 
     </div>
   );
