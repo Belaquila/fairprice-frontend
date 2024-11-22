@@ -5,12 +5,22 @@ import { getAllCosts } from "../api/costApi";
 const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [newCost, setNewCost] = useState({ costId: "", quantity: "", unit: "" });
   const [availableCosts, setAvailableCosts] = useState([]);
+  const [productCostIds, setProductCostIds] = useState([]);
+
+  useEffect(() => {
+    // Update the state whenever the product's costs change
+    setProductCostIds(product.costs.map(cost => cost.cost._id));
+  }, [product.costs]);
 
   useEffect(() => {
     getAllCosts()
-      .then((data) => setAvailableCosts(data))
+      .then((data) => {
+        setAvailableCosts(data);
+      })
       .catch((error) => console.error("Error fetching costs:", error));
   }, []);
+
+  const filteredCosts = availableCosts.filter(cost => !productCostIds.includes(cost._id));
 
   const handleAddCost = () => {
     onAddCost(newCost);
@@ -40,7 +50,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
             className="border p-1 rounded mr-2"
           >
             <option value="">Select Cost</option>
-            {availableCosts.map((cost) => (
+            {filteredCosts.map(cost => (
               <option key={cost._id} value={cost._id}>
                 {cost.name}
               </option>
@@ -48,23 +58,23 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
           </select>
           <input
             type="number"
-            placeholder="Quantity"
             value={newCost.quantity}
             onChange={(e) =>
               setNewCost((prev) => ({ ...prev, quantity: e.target.value }))
             }
+            placeholder="Quantity"
             className="border p-1 rounded mr-2"
           />
           <input
             type="text"
-            placeholder="Unit"
             value={newCost.unit}
             onChange={(e) =>
               setNewCost((prev) => ({ ...prev, unit: e.target.value }))
             }
+            placeholder="Unit"
             className="border p-1 rounded mr-2"
           />
-          <button onClick={handleAddCost} className="text-green-500">
+          <button onClick={handleAddCost} className="bg-blue-500 text-white p-2 rounded">
             Add Cost
           </button>
         </div>
