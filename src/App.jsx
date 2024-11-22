@@ -6,50 +6,53 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import { Route, Routes, Navigate } from 'react-router-dom';
 import ProductListPage from './pages/ProductListPage';
-import ProductDetailsPage from './pages/ProductDetailsPage';  
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import AddProductPage from './pages/AddProductPage';
+import Header from './components/Header';
+
+import Sidebar from './components/Sidebar';
+import { useState } from 'react';
 
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
-import AddProductPage from './pages/AddProductPage';
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
-    <LandingPage></LandingPage>
-    
-    <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" />} />
+
+      {/* <LandingPage></LandingPage> */}
+
+
+      <Header />
+
+
+      {/*<NavBar toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      {isSidebarOpen && <Sidebar />}*/}
+
+      <div
+        className={`content ${isSidebarOpen ? "shifted" : ""} relative z-10`}
+      >
+
+        <Routes>
+          
           <Route path="/products" element={
             <IsPrivate>
               <ProductListPage />
             </IsPrivate>
-            } />
+          } />
+
           <Route
             path="/products/:id"
             element={
               <IsPrivate>
-            <ProductDetailsPage />
-            </IsPrivate>}
+                <ProductDetailsPage />
+              </IsPrivate>}
           />
+
           <Route path="/products/create" element={<AddProductPage />} />
-          {/*
-          <Route path="/products/edit/:productId" element={<ProductEditPage />} />
-          
-          
-          <Route
-            path="/profile"
-            element={
-              <IsPrivate>
-                <UserProfilePage />
-              </IsPrivate>
-            }
-          />
 
-          */}
-
-
-        
           <Route
             path="/login"
             element={
@@ -68,9 +71,9 @@ function App() {
           />
         </Routes>
 
+      </div>
+      <MainFooter />
 
-    <MainFooter/>
-    
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllCosts } from "../api/costApi";
-
+import { Button } from "flowbite-react";
 const CostCard = ({ cost, onUpdate, onDelete }) => {
   const [editMode, setEditMode] = useState(false);
   const [quantity, setQuantity] = useState(cost.quantity);
@@ -63,9 +63,9 @@ const CostCard = ({ cost, onUpdate, onDelete }) => {
           Edit
         </button>
       )}
-      <button onClick={() => onDelete(cost._id)} className="text-red-500">
+      <Button onClick={() => onDelete(cost._id)} className="text-red-500">
         Delete
-      </button>
+      </Button>
     </div>
   );
 };
