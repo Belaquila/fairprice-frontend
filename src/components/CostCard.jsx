@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAllCosts } from "../api/costApi";
 
 const CostCard = ({ cost, onUpdate, onDelete }) => {
   const [editMode, setEditMode] = useState(false);
   const [quantity, setQuantity] = useState(cost.quantity);
   const [unit, setUnit] = useState(cost.unit);
+  const [costDetails, setCostDetails] = useState(null);
+
+  useEffect(() => {
+    getAllCosts()
+      .then((data) => {
+        const costDetail = data.find((c) => c._id === cost.cost._id);
+        setCostDetails(costDetail);
+        onUpdate(cost._id, { quantity, unit });
+      })
+      .catch((error) => console.error("Error fetching cost details:", error));
+  }, [cost.cost._id]);
 
   const handleSave = () => {
     onUpdate(cost._id, { quantity, unit });
@@ -13,9 +25,16 @@ const CostCard = ({ cost, onUpdate, onDelete }) => {
   return (
     <div className="flex items-center justify-between p-2 border-b">
       <div>
-        <p className="font-bold">{cost.cost.name}</p>
-        <p className="font-bold">{cost.cost._id}</p>
-        <p className="font-bold">{cost._id}</p>
+        {costDetails ? (
+          <>
+            <p className="font-bold">{costDetails.name}</p>
+            <p>{costDetails.category}</p>
+            <p>{costDetails.cost_type}</p>
+            <p>{costDetails._id}</p>
+          </>
+        ) : (
+          <p>Loading cost details...</p>
+        )}
         <p>
           {editMode ? (
             <>
