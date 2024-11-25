@@ -18,11 +18,14 @@ const ProductCard = ({ product, onDelete }) => {
   };
 
   return (
-    <Card className="cursor-pointer">
+    <Card className="custom-card cursor-pointer">
+      <div className="image-container">
+        <img src={product.imageUrl} alt={product.name} />
+      </div>
       <h3 className="text-lg font-bold">{product.name}</h3>
       <p>Total Cost: ${product.unit_total_cost.toFixed(2)}</p>
       <p>Price: ${product.unit_price.toFixed(2)}</p>
-      <p>Costs Count: {product.costs.length}</p>
+      <p>Number of ingredients: {product.costs.length}</p>
       <div className="flex space-x-2">
         <Button onClick={() => navigate(`/products/${product._id}`)}>Details</Button>
         <Button color="failure" onClick={handleDelete}>Delete</Button>

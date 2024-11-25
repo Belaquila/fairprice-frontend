@@ -10,13 +10,16 @@ const ProductListPage = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="relative p-4">
+      <div className="flex justify-end mb-6">
+        <button
+          onClick={handleCreateProduct}
+          className="bg-[var(--secondary-color)] text-white"
+        >
+          Create Product
+        </button>
+      </div>
       <h1 className="text-2xl font-bold text-center mb-4">Product List</h1>
-      <button onClick={handleCreateProduct}
-      className="absolute top-0 right-0 mt-4 mr-4"
-      >
-        Create product
-      </button>
       <ProductList />
     </div>
   );

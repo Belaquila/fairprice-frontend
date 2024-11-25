@@ -3,7 +3,7 @@ import LandingPage from './pages/LandingPage'
 import MainFooter from './components/MainFooter'
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, Router } from 'react-router-dom';
 import ProductListPage from './pages/ProductListPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import AddProductPage from './pages/AddProductPage';
@@ -33,12 +33,14 @@ function App() {
   return (
     <>
 
+    <div className="flex flex-col min-h-screen">
+
       <Header/>
       {isLoggedIn && <SideMenu isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen} onToggle={handleDrawerToggle}/>}
-
+      <div className="flex-grow">
       <AppContainer isDrawerOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
         
-      <div className="relative flex-grow">
+      
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -48,11 +50,12 @@ function App() {
           <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
           <Route path="/signup" element={<IsAnon><SignupPage /></IsAnon>} />
         </Routes>
-      </div>
+    
       </AppContainer>
-
-      <MainFooter className="mt-0"/>
-
+      </div>
+      
+      </div>
+  
     </>
   )
 }

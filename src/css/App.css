@@ -124,9 +124,9 @@
   }
   
   /* Forms */
-  input,
-  textarea,
-  select {
+  .input,
+  .textarea,
+  .select {
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     padding: 0.5rem;
@@ -134,14 +134,21 @@
     margin: 0.5rem 0;
   }
   
-  input:focus,
-  textarea:focus,
-  select:focus {
+  .input:focus,
+  .textarea:focus,
+  .select:focus {
     border-color: var(--accent-color);
     outline: none;
     box-shadow: 0 0 0 2px rgba(142, 68, 173, 0.3);
   }
   
+  .label {
+    margin: 0px;
+    padding-left: 4px;
+    display: block;
+    color:#333333;
+  }
+
   /* Pricing Highlights */
   .pricing-tag {
     background-color: var(--secondary-color);
@@ -299,7 +306,7 @@ footer a:hover {
 }
 
 /* Forms */
-input,
+/* input,
 textarea,
 select {
   border: 1px solid #e0e0e0;
@@ -315,7 +322,8 @@ select:focus {
   border-color: var(--accent-color);
   outline: none;
   box-shadow: 0 0 0 2px rgba(142, 68, 173, 0.3);
-}
+} */
+
 
 /* Pricing Highlights */
 .pricing-tag {

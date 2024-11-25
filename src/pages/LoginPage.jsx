@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { Card } from "flowbite-react";
 
 
 // URL of the API/server - http://localhost:5005
@@ -40,22 +41,14 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg">
+      <form onSubmit={handleLoginSubmit} className="p-4">
+        <h3 className="text-center font-bold mb-4">Login</h3>
 
-      <form
-        onSubmit={handleLoginSubmit}
-
-      >
-        <h3>
-          Login
-        </h3>
-
-        <label
-          htmlFor="email"
-        >
-          Email
-        </label>
+        <label className="label" htmlFor="email">Email</label>
         <input
+          className="input"
           type="email"
           name="email"
           id="email"
@@ -64,12 +57,9 @@ function LoginPage() {
           autoComplete="off"
         />
 
-        <label
-          htmlFor="password"
-        >
-          Password
-        </label>
+        <label htmlFor="password">Password</label>
         <input
+          className="input"
           type="password"
           name="password"
           id="password"
@@ -78,17 +68,15 @@ function LoginPage() {
           autoComplete="off"
         />
 
-        <button
-          type="submit"
-        >
-          Log In
-        </button>
+        <button className= "mt-4" type="submit">Log In</button>
       </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
 
-      <p>Don&apos;t have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <p className="ml-4">Don&apos;t have an account yet?   <span><Link to={"/signup"}> Sign Up</Link></span></p>
+      
+
+      </Card>
     </div>
   );
 }

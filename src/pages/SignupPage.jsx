@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { Card, Button, Label, Checkbox, TextInput } from "flowbite-react";
+import '../css/App.css'
 
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
@@ -41,70 +42,60 @@ function SignupPage() {
 
 
   return (
-    <div >
-      <div></div>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
 
-      <form
-        onSubmit={handleSignupSubmit}
-      >
-        <h3>
-          Sign Up
-        </h3>
+      <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg">
 
-        <label
-          htmlFor="email"
-        >
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={handleEmail}
-          autoComplete="off"
-        />
+        <form onSubmit={handleSignupSubmit} className="p-4">
 
-        <label
-          htmlFor="password"
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={handlePassword}
-          autoComplete="off"
-        />
+          <h3 className="text-center font-bold mb-4">Sign Up</h3>
 
-        <label
-          htmlFor="name"
-        >
-          Name
-        </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          onChange={handleName}
-          autoComplete="off"
-        />
+          <label className="label" htmlFor="email">Email</label>
+          <input
+            className="input"
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleEmail}
+            autoComplete="off"
+          />
 
-        <button
-          type="submit"
-        >
-          Create Account
-        </button>
-      </form>
+          <label className="label" htmlFor="password">Password</label>
+          <input
+          className="input"
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={handlePassword}
+            autoComplete="off"
+          />
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <label className="label" htmlFor="name">Name</label>
+          <input
+          className="input"
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={handleName}
+            autoComplete="off"
+          />
 
-      <p>Already have an account?</p>
-      <Link to={"/login"}> Log in</Link>
+          <button className= "mt-4" type="submit">Create Account</button>
+          
+        </form>
+
+        {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
+
+        <p className="ml-4">Already have an account?   <span><Link to={"/login"}>Log in</Link></span></p>
+        
+
+
+      </Card>
     </div>
+
   )
 }
 

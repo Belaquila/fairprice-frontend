@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutPage = () => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="flex-grow p-5">
       <h1>About FairPrice</h1>
       <p>
         FairPrice is a project aimed at providing business owners with the best tools to control their pricing strategies.
