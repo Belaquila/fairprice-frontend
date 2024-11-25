@@ -27,7 +27,6 @@ function App() {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-
   console.log("draweer open", isDrawerOpen);
   
   return (
@@ -38,7 +37,7 @@ function App() {
 
       <AppContainer isDrawerOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
         
-      <div className="relative flex-grow pt-16">
+      <div className="relative flex-grow">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/products" element={<IsPrivate><ProductListPage /></IsPrivate>} />
@@ -50,7 +49,7 @@ function App() {
       </div>
       </AppContainer>
 
-      <MainFooter className=""/>
+      <MainFooter className="mt-0"/>
 
     </>
   )

@@ -348,3 +348,24 @@ select:focus {
     font-size: 0.9rem;
   }
 }
+
+
+.custom-card {
+  transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+
+.custom-card img {
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.image-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

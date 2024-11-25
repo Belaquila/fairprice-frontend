@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function MainFooter() {
   
   return (
-    <Footer id="footer" >
+    <Footer id="footer" classname="w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between mt-0">
 
       <Footer.Copyright by="FairPrice™" year={2024} 
       

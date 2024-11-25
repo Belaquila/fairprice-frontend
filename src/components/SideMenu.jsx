@@ -60,7 +60,7 @@ export function SideMenu({isOpen, setIsOpen}) {
     <>
       <div className="flex  items-center justify-center">
         <Button 
-        className="w-4 h-8 bg-[var(--secondary-color)] rounded-l-full fixed left-0 top-1/4 transform -translate-y-1/2 rotate-180"
+        className="w-4 h-8 bg-[var(--secondary-color)] rounded-l-full fixed left-0 top-1/4 transform -translate-y-1/2 rotate-180 z-50"
         onClick={() => setIsOpen(true)}></Button>
       </div>
       <Drawer open={isOpen} onClose={handleClose} className="w-56">
