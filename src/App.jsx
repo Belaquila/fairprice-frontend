@@ -9,6 +9,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage';
 import AddProductPage from './pages/AddProductPage';
 import Header from './components/Header';
 import AppContainer from './components/AppContainer';
+import AboutPage from './pages/AboutPage';
 
 import { useState } from 'react';
 
@@ -40,6 +41,7 @@ function App() {
       <div className="relative flex-grow">
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/products" element={<IsPrivate><ProductListPage /></IsPrivate>} />
           <Route path="/products/:id" element={<IsPrivate><ProductDetailsPage /></IsPrivate>} />
           <Route path="/products/create" element={<IsPrivate><AddProductPage /></IsPrivate>} />
