@@ -39,58 +39,58 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
       </Card>
 
 
-  
-        <h2 className="text-xl font-bold text-gray-800">Ingredients</h2>
-        <Card className="mb-5 mt-5 p-4">
-          <CostList
-            costs={product.costs}
-            onUpdate={onUpdateCost}
-            onDelete={onDeleteCost}
-          />
-        </Card>
 
-    
-        <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg items-center mb-20 mt-10">
-          
-          <div className="">
-            <select
-              value={newCost.costId}
-              onChange={(e) =>
-                setNewCost((prev) => ({ ...prev, costId: e.target.value }))
-              }
-              className="input"
-            >
-              <option value="">Select Cost</option>
-              {filteredCosts.map(cost => (
-                <option key={cost._id} value={cost._id}>
-                  {cost.name}
-                </option>
-              ))}
-            </select>
-            <input
-              type="number"
-              value={newCost.quantity}
-              onChange={(e) =>
-                setNewCost((prev) => ({ ...prev, quantity: e.target.value }))
-              }
-              placeholder="Quantity"
-              className="input"
-            />
-            <input
-              type="text"
-              value={newCost.unit}
-              onChange={(e) =>
-                setNewCost((prev) => ({ ...prev, unit: e.target.value }))
-              }
-              placeholder="Unit"
-              className="input"
-            />
-            <button onClick={handleAddCost}>
-              Add ingredient
-            </button>
-          </div>
-        </Card>
-      
+      <h2 className="text-xl font-bold text-gray-800">Ingredients</h2>
+      <Card className="mb-5 mt-5 p-4">
+        <CostList
+          costs={product.costs}
+          onUpdate={onUpdateCost}
+          onDelete={onDeleteCost}
+        />
+      </Card>
+
+
+      <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg items-center mb-20 mt-10">
+
+        <div className="">
+          <select
+            value={newCost.costId}
+            onChange={(e) =>
+              setNewCost((prev) => ({ ...prev, costId: e.target.value }))
+            }
+            className="input"
+          >
+            <option value="">Select Cost</option>
+            {filteredCosts.map(cost => (
+              <option key={cost._id} value={cost._id}>
+                {cost.name}
+              </option>
+            ))}
+          </select>
+          <input
+            type="number"
+            value={newCost.quantity}
+            onChange={(e) =>
+              setNewCost((prev) => ({ ...prev, quantity: e.target.value }))
+            }
+            placeholder="Quantity"
+            className="input"
+          />
+          <input
+            type="text"
+            value={newCost.unit}
+            onChange={(e) =>
+              setNewCost((prev) => ({ ...prev, unit: e.target.value }))
+            }
+            placeholder="Unit"
+            className="input"
+          />
+          <button onClick={handleAddCost}>
+            Add ingredient
+          </button>
+        </div>
+      </Card>
+
     </div>
   );
 };

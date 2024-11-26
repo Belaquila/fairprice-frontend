@@ -18,20 +18,29 @@ const ProductCard = ({ product, onDelete }) => {
   };
 
   return (
-    <Card className="custom-card cursor-pointer">
-      <div className="image-container">
-        <img src={product.imageUrl} alt={product.name} />
+    <div className="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 max-w-64 flex flex-col">
+      <div className="h-1/2 overflow-hidden">
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+          className="w-full h-full object-cover rounded-t-lg"
+        />
       </div>
-      <h3 className="text-lg font-bold">{product.name}</h3>
-      <p>Total Cost: ${product.unit_total_cost.toFixed(2)}</p>
-      <p>Price: ${product.unit_price.toFixed(2)}</p>
-      <p>Number of ingredients: {product.costs.length}</p>
-      <div className="flex space-x-2">
-        <Button onClick={() => navigate(`/products/${product._id}`)}>Details</Button>
-        <Button color="failure" onClick={handleDelete}>Delete</Button>
+      <div className="flex flex-col justify-between flex-grow p-4">
+        <h3 className="text-lg font-bold  text-purple-700">{product.name}</h3>
+        <p>Total Cost: ${product.unit_total_cost.toFixed(2)}</p>
+        <p>Price: ${product.unit_price.toFixed(2)}</p>
+        <p>Number of ingredients: {product.costs.length}</p>
+        <div className="flex space-x-2 mt-auto">
+          <button className="rounded font-normal bg-white text-green-700 border border-green-500 py-2 px-4" onClick={() => navigate(`/products/${product._id}`)}>Details</button>
+          <Button color="failure" onClick={handleDelete}>Delete</Button>
+        </div>
       </div>
-    </Card>
+    </div>
   );
 };
 
 export default ProductCard;
+
+
+//class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 max-w-64 flex flex-col"
