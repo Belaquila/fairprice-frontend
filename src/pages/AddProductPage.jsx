@@ -11,11 +11,11 @@ const AddProductPage = () => {
 
 
     return (
-        <div>
-            <h1>Add New Product</h1>
-            <button onClick={handleBack} className="mb-4 p-2 bg-gray-500 text-white rounded">
+        <div className="p-8">
+            <button onClick={handleBack} className="">
                 Back
             </button>
+            <h1>Add New Product</h1>
             <AddProduct />
         </div>
     );

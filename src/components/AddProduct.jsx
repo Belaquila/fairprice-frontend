@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Card } from 'flowbite-react';
 
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 const token = localStorage.getItem('authToken');
@@ -43,6 +44,7 @@ const AddProduct = () => {
     };
 
     return (
+        <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg items-center mb-20 mt-10">
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Product Name:</label>
@@ -51,6 +53,8 @@ const AddProduct = () => {
                     id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    className='input'
+                    placeholder='Name of your creation'
                 />
             </div>
             <div>
@@ -60,6 +64,8 @@ const AddProduct = () => {
                     id="baseQuantity"
                     value={baseQuantity}
                     onChange={(e) => setBaseQuantity(e.target.value)}
+                    className='input'
+                    placeholder='Quantity or Number of portions'
                 />
             </div>
             <div>
@@ -69,6 +75,8 @@ const AddProduct = () => {
                     id="unitTotalCost"
                     value={unitTotalCost}
                     onChange={(e) => setUnitTotalCost(e.target.value)}
+                    className='input'
+                    placeholder='estimated cost per unit or portion'
                 />
             </div>
             <div>
@@ -78,10 +86,13 @@ const AddProduct = () => {
                     id="unitPrice"
                     value={unitPrice}
                     onChange={(e) => setUnitPrice(e.target.value)}
+                    className='input'
+                    placeholder='price of unit or portion'
                 />
             </div>
             <button type="submit">Add Product</button>
         </form>
+        </Card>
     );
 };
 

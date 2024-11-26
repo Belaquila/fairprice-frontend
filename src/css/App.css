@@ -377,3 +377,12 @@ select:focus {
   align-items: center;
   justify-content: center;
 }
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.border-radius-top {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}

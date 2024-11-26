@@ -42,10 +42,11 @@ const ProductDetailsPage = () => {
   };
 
   return (
-    <div>
+    <div className="p-4">
       <button onClick={handleBack}>
         Back
       </button>
+
       {product ? (
         <ProductDetails
           product={product}
