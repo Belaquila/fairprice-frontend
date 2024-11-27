@@ -54,37 +54,18 @@ export const getProducts = () =>
     .then((response) => response.data);
 
 
-//export const uploadImage = (file) => {
-//  if (!file) {
-//    throw new Error("No file provided");
-//  }
-//
-//  console.log(file)
-//
-//  //const formData = new FormData();
-//  //formData.append('file', file);
-//
-//  return api
-//    .post('/upload', formData, {
-//      headers: {
-//        'Content-Type': 'multipart/form-data'
-//      }
-//    })
-//    .then(res => res.data);
-//};
-
-
 export const uploadImage = file => {
   if (!file) {
     throw new Error("No file provided");
   }
-
-  console.log(file)
-
-  //const formData = new FormData();
-  //formData.append('file', file);
-
   return api
   .post('/upload', file)
   .then(res => res.data)
 };
+
+export const getProductsWithUnitCostId = (id) =>
+  axios
+    .get(`${VITE_API_URL}/api/products/cost/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => response.data);

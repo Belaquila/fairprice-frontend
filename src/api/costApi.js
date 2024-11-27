@@ -13,3 +13,14 @@ export const getAllCosts = () =>
       console.error("Error fetching costs:", error);
       throw error;
     });
+
+export const deleteUnitCostById = (id) =>
+  axios
+    .delete(`${VITE_API_URL}/api/costs/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error("Error deleting unit cost:", error);
+      throw error;
+    });
