@@ -18,6 +18,8 @@ import IsAnon from "./components/IsAnon";
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
 import SideMenu from './components/Sidemenu';
+import UnitCostListPage from './pages/UnitCostListPage'
+import CreateCostPage from './pages/CreateCostPage'
 
 function App() {
 
@@ -45,8 +47,10 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/products" element={<IsPrivate><ProductListPage /></IsPrivate>} />
+          <Route path="/costs" element={<IsPrivate><UnitCostListPage /></IsPrivate>} />
           <Route path="/products/:id" element={<IsPrivate><ProductDetailsPage /></IsPrivate>} />
           <Route path="/products/create" element={<IsPrivate><AddProductPage /></IsPrivate>} />
+          <Route path="/costs/create" element={<IsPrivate><CreateCostPage /></IsPrivate>} />
           <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
           <Route path="/signup" element={<IsAnon><SignupPage /></IsAnon>} />
         </Routes>
