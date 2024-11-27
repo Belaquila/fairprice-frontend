@@ -2,16 +2,21 @@ import { useState, useEffect } from "react";
 import CostList from "./CostList";
 import { getAllCosts } from "../api/costApi";
 import { Card } from "flowbite-react";
+import { calculateTotalCost } from "../services/calculate-total-cost";
 
 const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [newCost, setNewCost] = useState({ costId: "", quantity: "", unit: "" });
   const [availableCosts, setAvailableCosts] = useState([]);
   const [productCostIds, setProductCostIds] = useState([]);
+  const [unitTotalCost, setUnitTotalCost] = useState(0);
+  const [baseQuantity, setBaseQuantity] = useState(product.base_quantity);
 
   useEffect(() => {
     // Update the state whenever the product's costs change
     setProductCostIds(product.costs.map(cost => cost.cost._id));
-  }, [product.costs]);
+    const totalCost = calculateTotalCost(product, availableCosts);
+    setUnitTotalCost((totalCost / baseQuantity).toFixed(2));
+  }, [product, availableCosts, baseQuantity]);
 
   useEffect(() => {
     getAllCosts()
@@ -30,15 +35,20 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
 
   return (
     <div className="p-8">
-
       <h1 className="text-2xl font-bold text-secondary">{product.name}</h1>
       <Card className="mb-10 mt-5">
-        <p>Base Quantity: {product.base_quantity}</p>
-        <p>Unit Total Cost: {product.unit_total_cost}</p>
+        <p>Base Quantity: {baseQuantity}</p>
+        <input
+          type="range"
+          min="1"
+          max="51"
+          value={baseQuantity}
+          onChange={(e) => setBaseQuantity(e.target.value)}
+          className="slider"
+        />
+        <p>Unit Total Cost: {unitTotalCost} €</p>
         <p>Unit Price: {product.unit_price}</p>
       </Card>
-
-
 
       <h2 className="text-xl font-bold text-gray-800">Ingredients</h2>
       <Card className="mb-5 mt-5 p-4">
@@ -49,9 +59,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
         />
       </Card>
 
-
       <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg items-center mb-20 mt-10">
-
         <div className="">
           <select
             value={newCost.costId}
@@ -90,7 +98,6 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
           </button>
         </div>
       </Card>
-
     </div>
   );
 };
