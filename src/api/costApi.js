@@ -24,3 +24,11 @@ export const deleteUnitCostById = (id) =>
       console.error("Error deleting unit cost:", error);
       throw error;
     });
+
+export const updateUnitCostById = (id, costData) =>
+  axios
+    .put(`${VITE_API_URL}/api/costs/${id}`, costData, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
