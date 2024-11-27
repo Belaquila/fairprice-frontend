@@ -1,15 +1,26 @@
 import { Card, Button } from "flowbite-react";
 //import { useNavigate } from "react-router-dom";
-//import { deleteUnitCostById } from "../api/costApi"; // to be done
+import { deleteUnitCostById } from "../api/costApi";
+import { getProductsWithUnitCostId } from "../api/productApi";
+import { useEffect, useState } from "react";
 
 const UnitCostCard = ({ unitCost, onDelete }) => {
   //const navigate = useNavigate();
+  const [deletables, setDeletables] = useState([unitCost._id, true]);
+
+  useEffect(() => {
+    getProductsWithUnitCostId(unitCost._id).then((products) => {
+      if (products.length > 0) {
+        setDeletables([unitCost._id, false]);
+      }
+    });
+  }, [unitCost._id]);
 
   const handleDelete = () => {
-    deleteUnitCostById(product._id)
+    deleteUnitCostById(unitCost._id)
       .then(() => {
         if (onDelete) {
-          onDelete(unitCost._id); // allow parent component to update UI
+          onDelete(unitCost._id);
         }
       })
       .catch((error) => {
@@ -33,7 +44,13 @@ const UnitCostCard = ({ unitCost, onDelete }) => {
 
         <div className="flex space-x-2 mt-auto">
           {/* <button className="rounded font-normal bg-white text-green-700 border border-green-500 py-2 px-4" onClick={() => navigate(`/costs/${unitCost._id}`)}>Details</button> */}
-          {/* <Button color="failure" onClick={handleDelete}>Delete</Button> */}
+          <Button
+            color="failure"
+            onClick={handleDelete}
+            disabled={!deletables[1]}
+            className={!deletables[1] ? "bg-gray-400 cursor-not-allowed" : ""}>
+            Delete
+          </Button>
         </div>
       </div>
     </div>
