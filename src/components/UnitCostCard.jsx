@@ -28,8 +28,9 @@ const UnitCostCard = ({ unitCost, onDelete }) => {
       </div>
       <div className="flex flex-col justify-between flex-grow p-4">
         <h3 className="text-lg font-bold  text-purple-700">{unitCost.name}</h3>
-        <p>Value : ${unitCost.value.toFixed(2)}</p>
-        <p>per: ${unitCost.unit}</p>
+        <p>{unitCost.category} {unitCost.cost_type}</p>
+        <p>costs <span className="font-bold  text-purple-700">{unitCost.currency}{unitCost.value.toFixed(2)}/{unitCost.unit} </span></p>
+
         <div className="flex space-x-2 mt-auto">
           {/* <button className="rounded font-normal bg-white text-green-700 border border-green-500 py-2 px-4" onClick={() => navigate(`/costs/${unitCost._id}`)}>Details</button> */}
           {/* <Button color="failure" onClick={handleDelete}>Delete</Button> */}
