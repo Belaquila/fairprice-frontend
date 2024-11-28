@@ -10,12 +10,14 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [productCostIds, setProductCostIds] = useState([]);
   const [unitTotalCost, setUnitTotalCost] = useState(0);
   const [baseQuantity, setBaseQuantity] = useState(product.base_quantity);
+  const [unitPrice, setUnitPrice] = useState((unitTotalCost * 1.2).toFixed(2));
 
   useEffect(() => {
     // Update the state whenever the product's costs change
     setProductCostIds(product.costs.map(cost => cost.cost._id));
     const totalCost = calculateTotalCost(product, availableCosts);
     setUnitTotalCost((totalCost / baseQuantity).toFixed(2));
+    setUnitPrice((totalCost / baseQuantity * 1.2).toFixed(2));
   }, [product, availableCosts, baseQuantity]);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
           className="slider"
         />
         <p>Unit Total Cost: {unitTotalCost} €</p>
-        <p>Unit Price: {product.unit_price}</p>
+        <p>Unit Price: {unitPrice} €</p>
       </Card>
 
       <h2 className="text-xl font-bold text-gray-800">Ingredients</h2>
