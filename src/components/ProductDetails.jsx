@@ -56,27 +56,68 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   };
 
   return (
-    <>
-        <button onClick={handleSave} className="mt-4 btn btn-primary items-center w-50">
-          Save
-        </button>
-    
     <div className="p-8">
-      <h1 className="text-2xl font-bold text-secondary">{product.name}</h1>
-      <Card className="mb-10 mt-5">
-        <p>Base Quantity: {baseQuantity}</p>
-        <input
-          type="range"
-          min="1"
-          max="51"
-          value={baseQuantity}
-          onChange={(e) => setBaseQuantity(e.target.value)}
-          className="slider"
-        />
-        <p>Unit Total Cost: {unitTotalCost} €</p>
-        <p>Unit Price: {unitPrice} €</p>
+      <h1 className="text-2xl font-bold">{product.name}</h1>
+      <div className="flex flex-wrap gap-4 mb-10 mt-5">
+        <Card className="w-full md:w-2/3" imgSrc={product.imageUrl} horizontal>
+          <div>
+            <p>Base Quantity: {baseQuantity}</p>
+            <input
+              type="range"
+              min="1"
+              max="51"
+              value={baseQuantity}
+              onChange={(e) => setBaseQuantity(e.target.value)}
+              className="slider"
+            />
+            <p className="mt-4">1 portion (or unit) costs <span className="text-xl font-bold text-secondary pt-4">{unitTotalCost} €</span></p>
+            <p>for 20% margin, the price <span className="text-2xl font-bold text-primary-color">{unitPrice} €</span></p>
+          </div>
+        </Card>
+        <Card className="w-full md:w-1/3">
+          <div className="">
+            <select
+              value={newCost.costId}
+              onChange={(e) =>
+                setNewCost((prev) => ({ ...prev, costId: e.target.value }))
+              }
+              className="input"
+            >
+              <option value="">Select Cost</option>
+              {filteredCosts.map(cost => (
+                <option key={cost._id} value={cost._id}>
+                  {cost.name}
+                </option>
+              ))}
+            </select>
+            <input
+              type="number"
+              value={newCost.quantity}
+              onChange={(e) =>
+                setNewCost((prev) => ({ ...prev, quantity: e.target.value }))
+              }
+              placeholder="Quantity"
+              className="input"
+            />
+            <input
+              type="text"
+              value={newCost.unit}
+              onChange={(e) =>
+                setNewCost((prev) => ({ ...prev, unit: e.target.value }))
+              }
+              placeholder="Unit"
+              className="input"
+            />
+            <button onClick={handleAddCost}>
+              Add ingredient
+            </button>
+          </div>
+        </Card>
+      </div>
 
-      </Card>
+      <button onClick={handleSave} className="btn btn-primary mb-6 items-center" style={{ backgroundColor: 'var(--primary-color)', color: 'white' }}>
+        Save
+      </button>
 
       <h2 className="text-xl font-bold text-gray-800">Ingredients</h2>
       <Card className="mb-5 mt-5 p-4">
@@ -86,48 +127,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
           onDelete={onDeleteCost}
         />
       </Card>
-
-      <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg items-center mb-20 mt-10">
-        <div className="">
-          <select
-            value={newCost.costId}
-            onChange={(e) =>
-              setNewCost((prev) => ({ ...prev, costId: e.target.value }))
-            }
-            className="input"
-          >
-            <option value="">Select Cost</option>
-            {filteredCosts.map(cost => (
-              <option key={cost._id} value={cost._id}>
-                {cost.name}
-              </option>
-            ))}
-          </select>
-          <input
-            type="number"
-            value={newCost.quantity}
-            onChange={(e) =>
-              setNewCost((prev) => ({ ...prev, quantity: e.target.value }))
-            }
-            placeholder="Quantity"
-            className="input"
-          />
-          <input
-            type="text"
-            value={newCost.unit}
-            onChange={(e) =>
-              setNewCost((prev) => ({ ...prev, unit: e.target.value }))
-            }
-            placeholder="Unit"
-            className="input"
-          />
-          <button onClick={handleAddCost}>
-            Add ingredient
-          </button>
-        </div>
-      </Card>
     </div>
-    </>
   );
 };
 

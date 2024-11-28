@@ -12,7 +12,7 @@ const CreateCostPage = () => {
 
     return (
         <div className="p-8">
-            <button onClick={handleBack} className="">
+            <button onClick={handleBack} className="bg-gray-400">
                 Back
             </button>
             <h1>Add New Cost/Ingredient</h1>

@@ -14,12 +14,12 @@ const UnitCostListPage = () => {
       <div className="flex justify-end mb-6">
         <button
           onClick={handleCreateUnitCost}
-          className="bg-[var(--secondary-color)] text-white"
+          className="bg-[var(--secondary-color)] text-white mr-4 mt-10"
         >
-          Create Unit Cost
+          + Create Unit Cost
         </button>
       </div>
-      <h1 className="text-2xl font-bold text-center mb-4">Unit Costs List</h1>
+      <h1 className="m-4">Ingredients and other Costs</h1>
       <UnitCostList />
     </div>
   );

@@ -43,7 +43,7 @@ const ProductDetailsPage = () => {
 
   return (
     <div className="p-4">
-      <button onClick={handleBack}>
+      <button onClick={handleBack} className="bg-gray-400">
         Back
       </button>
 

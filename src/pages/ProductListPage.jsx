@@ -14,8 +14,7 @@ const ProductListPage = () => {
       <div className="flex justify-end mb-6">
         <button
           onClick={handleCreateProduct}
-          className="bg-[var(--secondary-color)] text-white mr-4 mt-10"
-        >
+          className="bg-[var(--secondary-color)] text-white mr-4 mt-10">
           + Create Product
         </button>
       </div>

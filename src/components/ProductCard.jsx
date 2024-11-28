@@ -32,7 +32,7 @@ const ProductCard = ({ product, onDelete }) => {
         <p>Price: ${product.unit_price.toFixed(2)}</p>
         <p>Number of ingredients: {product.costs.length}</p>
         <div className="flex space-x-2 mt-auto">
-          <button className="rounded font-normal bg-white text-green-700 border border-green-500 py-2 px-4" onClick={() => navigate(`/products/${product._id}`)}>Details</button>
+          <button className="rounded font-normal bg-white text-green-700 border border-green-500 py-2 px-4" onClick={() => navigate(`/products/${product._id}`)}>Edit</button>
           <Button color="failure" onClick={handleDelete}>Delete</Button>
         </div>
       </div>

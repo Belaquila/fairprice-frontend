@@ -87,6 +87,8 @@
     width: 100%;
     border-collapse: collapse;
     margin: 1rem 0;
+    overflow-x: auto;
+    display: block;
   }
   
   table th,
@@ -94,6 +96,7 @@
     padding: 0.75rem 1rem;
     border: 1px solid #e0e0e0;
     text-align: left;
+    white-space: nowrap;
   }
   
   table th {
@@ -269,6 +272,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
+  overflow-x: auto;
+  display: block;
 }
 
 table th,
@@ -276,6 +281,7 @@ table td {
   padding: 0.75rem 1rem;
   border: 1px solid #e0e0e0;
   text-align: left;
+  white-space: nowrap;
 }
 
 table th {
@@ -385,4 +391,45 @@ select:focus {
 .border-radius-top {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+.text-primary-color {
+  color: var(--primary-color);
+}
+
+.text-accent-color {
+  color: var(--accent-color);
+}
+
+/* Slider Styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--background-color);
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--secondary-color);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--secondary-color);
+  cursor: pointer;
+  border-radius: 50%;
 }
