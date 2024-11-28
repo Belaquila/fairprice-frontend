@@ -77,5 +77,13 @@ export const getProductsWithUnitCostId = (id) =>
     .then((response) => response.data)
     .catch((error) => console.error(error));
 
+export const updateProduct = (id, updates) =>
+  axios
+    .put(`${VITE_API_URL}/api/products/${id}`, updates, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+
 
 

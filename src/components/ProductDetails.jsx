@@ -3,6 +3,7 @@ import CostList from "./CostList";
 import { getAllCosts } from "../api/costApi";
 import { Card } from "flowbite-react";
 import { calculateTotalCost } from "../services/calculate-total-cost";
+import { updateProduct } from "../api/productApi"; // Import the updateProduct function
 
 const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [newCost, setNewCost] = useState({ costId: "", quantity: "", unit: "" });
@@ -35,6 +36,22 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
     setNewCost({ costId: "", quantity: "", unit: "" });
   };
 
+  const handleSave = () => {
+    const updatedProductData = {
+      base_quantity: baseQuantity,
+      unit_total_cost: unitTotalCost,
+      unit_price: unitPrice
+    };
+
+    updateProduct(product._id, updatedProductData)
+      .then((updatedProduct) => {
+        console.log("Product updated successfully:", updatedProduct);
+      })
+      .catch((error) => {
+        console.error("Error updating product:", error);
+      });
+  };
+
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold text-secondary">{product.name}</h1>
@@ -50,6 +67,9 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
         />
         <p>Unit Total Cost: {unitTotalCost} €</p>
         <p>Unit Price: {unitPrice} €</p>
+        <button onClick={handleSave} className="mt-4 btn btn-primary">
+          Save
+        </button>
       </Card>
 
       <h2 className="text-xl font-bold text-gray-800">Ingredients</h2>
