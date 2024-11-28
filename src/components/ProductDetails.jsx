@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import CostList from "./CostList";
 import { getAllCosts } from "../api/costApi";
 import { Card } from "flowbite-react";
@@ -12,6 +13,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [unitTotalCost, setUnitTotalCost] = useState(0);
   const [baseQuantity, setBaseQuantity] = useState(product.base_quantity);
   const [unitPrice, setUnitPrice] = useState((unitTotalCost * 1.2).toFixed(2));
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     // Update the state whenever the product's costs change
@@ -46,6 +48,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
     updateProduct(product._id, updatedProductData)
       .then((updatedProduct) => {
         console.log("Product updated successfully:", updatedProduct);
+        navigate("/products");
       })
       .catch((error) => {
         console.error("Error updating product:", error);
@@ -53,6 +56,11 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   };
 
   return (
+    <>
+        <button onClick={handleSave} className="mt-4 btn btn-primary items-center w-50">
+          Save
+        </button>
+    
     <div className="p-8">
       <h1 className="text-2xl font-bold text-secondary">{product.name}</h1>
       <Card className="mb-10 mt-5">
@@ -67,9 +75,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
         />
         <p>Unit Total Cost: {unitTotalCost} €</p>
         <p>Unit Price: {unitPrice} €</p>
-        <button onClick={handleSave} className="mt-4 btn btn-primary">
-          Save
-        </button>
+
       </Card>
 
       <h2 className="text-xl font-bold text-gray-800">Ingredients</h2>
@@ -121,6 +127,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
         </div>
       </Card>
     </div>
+    </>
   );
 };
 
