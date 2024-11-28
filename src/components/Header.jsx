@@ -16,13 +16,16 @@ export function Header() {
       <div className="flex md:order-2">
         {!isLoggedIn && (
           <NavLink to="/login">
-            <Button className="bg-[var(--secondary-color)] text-white mr-3">Log in</Button>
+            <Button className="bg-[var(--secondary-color)] text-white mr-4">Log in</Button>
           </NavLink>
         )}
         {!isLoggedIn && (
           <NavLink to="/signup">
             <Button className="bg-[var(--primary-color)] text-white mr-4">Get started</Button>
           </NavLink>
+        )}
+        {isLoggedIn && (
+          <Button onClick={logOutUser} className="bg-slate-400 text-white mr-4">Logout</Button>
         )}
 
         <Navbar.Toggle />
