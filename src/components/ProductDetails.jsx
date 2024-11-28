@@ -55,6 +55,15 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
       });
   };
 
+  const handleCostChange = (e) => {
+    const selectedCost = availableCosts.find(cost => cost._id === e.target.value);
+    setNewCost((prev) => ({
+      ...prev,
+      costId: e.target.value,
+      unit: selectedCost ? selectedCost.unit : ""
+    }));
+  };
+
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold">{product.name}</h1>
@@ -78,9 +87,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
           <div className="">
             <select
               value={newCost.costId}
-              onChange={(e) =>
-                setNewCost((prev) => ({ ...prev, costId: e.target.value }))
-              }
+              onChange={handleCostChange}
               className="input"
             >
               <option value="">Select Cost</option>
@@ -102,9 +109,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
             <input
               type="text"
               value={newCost.unit}
-              onChange={(e) =>
-                setNewCost((prev) => ({ ...prev, unit: e.target.value }))
-              }
+              readOnly
               placeholder="Unit"
               className="input"
             />
