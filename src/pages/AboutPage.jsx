@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const AboutPage = () => {
   return (
@@ -9,8 +10,17 @@ const AboutPage = () => {
         It enables them create new products and offerings while ensuring a positive margin for their financial health.
       </p>
 
-      <h2 className="mt-9">About the Author</h2>
-      
+      <h1>How it works</h1>
+      <ol className="list-decimal ml-5">
+        <li>Create new products and offerings.</li>
+        <li>Manage the costs of the ingredients and materials that go into the products.</li>
+        <li>Set the price of the products based on the costs and target profit margin fixed at 20% for the moment.</li>
+      </ol>
+
+      <p className='mt-5'>FairPrice is a project developed by Ahmed Belabdia as part of the final project at IronHack.</p>
+
+      <h1>About the Author</h1>
+
       <div className="flex items-center mt-4">
         <img
           src="/Ahmed.jpeg"
@@ -18,9 +28,17 @@ const AboutPage = () => {
           className="w-24 h-24 rounded-full mr-4"
         />
         <p>
-          This project was developed by Ahmed, a passionate engineer with a keen interest in entrepreneurship and creating solutions that make everyday tasks easier and more efficient. 
+          This project was developed by Ahmed, a passionate engineer with a keen interest in entrepreneurship and creating solutions that make everyday tasks easier and more efficient.
           With a background in software development and data analysis and a love for technology, Ahmed strives to build applications that are both functional and user-friendly.
         </p>
+      </div>
+      <div className="flex space-x-4 mt-4 p-2">
+        <a href="https://www.linkedin.com/in/ahmed-belabdia-a19118128/" target="_blank" rel="noopener noreferrer" className="text-blue-500 inline-block flex items-center">
+          <img src="LI-In-Bug.png" alt="LinkedIn Logo" className="w-7" />
+        </a>
+        <a href="https://github.com/Belaquila" target="_blank" rel="noopener noreferrer" className="text-gray-500 inline-block flex items-center">
+          <img src="github-mark.png" alt="Github Logo" className="w-7" />
+        </a>
       </div>
     </div>
   );
