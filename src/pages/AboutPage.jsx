@@ -39,12 +39,12 @@ const AboutPage = () => {
         </p>
       </div>
       <div className="flex space-x-4 mt-4">
-        <a href="https://www.linkedin.com/in/ahmed-belabdia-a19118128/" target="_blank" rel="noopener noreferrer" className="text-blue-500 inline-block flex items-center">
+        <NavLink to="https://www.linkedin.com/in/ahmed-belabdia-a19118128/" target="_blank" rel="noopener noreferrer" className="text-blue-500 inline-block flex items-center">
           <img src="LI-In-Bug.png" alt="LinkedIn Logo" className="w-7" />
-        </a>
-        <a href="https://github.com/Belaquila" target="_blank" rel="noopener noreferrer" className="text-gray-500 inline-block flex items-center">
+        </NavLink>
+        <NavLink to="https://github.com/Belaquila" target="_blank" rel="noopener noreferrer" className="text-gray-500 inline-block flex items-center">
           <img src="github-mark.png" alt="Github Logo" className="w-7" />
-        </a>
+        </NavLink>
       </div>
       <div className="mt-6 flex justify-center">
         {!isLoggedIn && (<NavLink to="/signup">

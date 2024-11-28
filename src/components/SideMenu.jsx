@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Drawer, Sidebar, TextInput } from 'flowbite-react';
 import { HiChartPie, HiSearch, HiShoppingBag, HiCollection, HiUsers, HiClipboard, HiInformationCircle } from 'react-icons/hi';
+import { NavLink } from 'react-router-dom';
 
 export function SideMenu({ isOpen, setIsOpen }) {
   const handleClose = () => setIsOpen(false);
@@ -27,25 +28,25 @@ export function SideMenu({ isOpen, setIsOpen }) {
                 {/* </form> */}
                 <Sidebar.Items>
                   <Sidebar.ItemGroup>
-                    {/* <Sidebar.Item href="/" icon={HiChartPie}>
-                      Dashboard
+                    {/* <Sidebar.Item icon={HiChartPie}>
+                      <NavLink to="/">Dashboard</NavLink>
                     </Sidebar.Item> */}
-                    <Sidebar.Item href="/products" icon={HiShoppingBag}>
-                      Products
+                    <Sidebar.Item icon={HiShoppingBag}>
+                      <NavLink to="/products">Products</NavLink>
                     </Sidebar.Item>
-                    <Sidebar.Item href="/costs" icon={HiCollection}>
-                      Costs
+                    <Sidebar.Item icon={HiCollection}>
+                      <NavLink to="/costs">Costs</NavLink>
                     </Sidebar.Item>
-                    {/* <Sidebar.Item href="/profil" icon={HiUsers}>
-                      Profil
+                    {/* <Sidebar.Item icon={HiUsers}>
+                      <NavLink to="/profil">Profil</NavLink>
                     </Sidebar.Item> */}
                   </Sidebar.ItemGroup>
                   <Sidebar.ItemGroup>
-                    {/* <Sidebar.Item href="/about" icon={HiClipboard}>
-                      Api Docs
+                    {/* <Sidebar.Item icon={HiClipboard}>
+                      <NavLink to="/about">Api Docs</NavLink>
                     </Sidebar.Item>
-                    <Sidebar.Item href="/contact" icon={HiInformationCircle}>
-                      Help
+                    <Sidebar.Item icon={HiInformationCircle}>
+                      <NavLink to="/contact">Help</NavLink>
                     </Sidebar.Item> */}
                   </Sidebar.ItemGroup>
                 </Sidebar.Items>
