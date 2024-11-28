@@ -1,7 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Button } from 'flowbite-react';
+import { AuthContext } from '../context/auth.context';
+import { useContext } from 'react';
 
 const AboutPage = () => {
+
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+
   return (
     <div className="flex-grow p-5">
       <h1>About FairPrice</h1>
@@ -32,13 +38,18 @@ const AboutPage = () => {
           With a background in software development and data analysis and a love for technology, Ahmed strives to build applications that are both functional and user-friendly.
         </p>
       </div>
-      <div className="flex space-x-4 mt-4 p-2">
+      <div className="flex space-x-4 mt-4">
         <a href="https://www.linkedin.com/in/ahmed-belabdia-a19118128/" target="_blank" rel="noopener noreferrer" className="text-blue-500 inline-block flex items-center">
           <img src="LI-In-Bug.png" alt="LinkedIn Logo" className="w-7" />
         </a>
         <a href="https://github.com/Belaquila" target="_blank" rel="noopener noreferrer" className="text-gray-500 inline-block flex items-center">
           <img src="github-mark.png" alt="Github Logo" className="w-7" />
         </a>
+      </div>
+      <div className="mt-6 flex justify-center">
+        {!isLoggedIn && (<NavLink to="/signup">
+          <Button className="bg-[var(--secondary-color)] text-white">Try Fairprice</Button>
+        </NavLink>)}
       </div>
     </div>
   );
