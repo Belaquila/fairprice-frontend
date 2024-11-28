@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllCosts } from "../api/costApi";
 
 import { Link } from "react-router-dom";
-import '../css/app.css';
+import '../css/App.css';
 
 const CostCard = ({ cost, onUpdate, onDelete }) => {
   const [editMode, setEditMode] = useState(false);
