@@ -43,7 +43,7 @@ const AddProduct = () => {
         axios.post(`${VITE_API_URL}/api/products`, {
             name,
             base_quantity: baseQuantity,
-            costs: costs.length ? costs : [], // Ensure costs is always an array
+            costs: costs.length ? costs : [],
             unit_total_cost: unitTotalCost,
             unit_price: unitPrice,
             imageUrl: imageUrl
