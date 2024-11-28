@@ -10,7 +10,6 @@ const ProductList = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    console.log(token);
     axios
       .get(`${VITE_API_URL}/api/products`, {
         headers: {
@@ -18,7 +17,6 @@ const ProductList = () => {
         },
       })
       .then((response) => {
-        console.log(response.data)
         if (Array.isArray(response.data)) {
           setProducts(response.data);
         } else {

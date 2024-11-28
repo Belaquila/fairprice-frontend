@@ -29,8 +29,6 @@ function App() {
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
-
-  console.log("draweer open", isDrawerOpen);
   
   return (
     <>

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import CostList from "./CostList";
 import { getAllCosts } from "../api/costApi";
 import { Card } from "flowbite-react";
 import { calculateTotalCost } from "../services/calculate-total-cost";
-import { updateProduct } from "../api/productApi"; // Import the updateProduct function
+import { updateProduct } from "../api/productApi";
 
 const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [newCost, setNewCost] = useState({ costId: "", quantity: "", unit: "" });
@@ -13,7 +13,7 @@ const ProductDetails = ({ product, onAddCost, onUpdateCost, onDeleteCost }) => {
   const [unitTotalCost, setUnitTotalCost] = useState(0);
   const [baseQuantity, setBaseQuantity] = useState(product.base_quantity);
   const [unitPrice, setUnitPrice] = useState((unitTotalCost * 1.2).toFixed(2));
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Update the state whenever the product's costs change

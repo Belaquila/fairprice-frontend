@@ -10,7 +10,6 @@ const UnitCostList = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    console.log(token);
     axios
       .get(`${VITE_API_URL}/api/costs`, {
         headers: {
@@ -18,7 +17,6 @@ const UnitCostList = () => {
         },
       })
       .then((response) => {
-        console.log(response.data)
         if (Array.isArray(response.data)) {
           setUnitCosts(response.data);
         } else {
