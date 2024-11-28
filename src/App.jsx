@@ -17,7 +17,7 @@ import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
-import SideMenu from './components/Sidemenu';
+import SideMenu from './components/SideMenu';
 import UnitCostListPage from './pages/UnitCostListPage'
 import CreateCostPage from './pages/CreateCostPage'
 import NotFoundPage from './pages/NotFoundPage';
@@ -64,4 +64,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
