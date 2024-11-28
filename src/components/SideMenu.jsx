@@ -27,26 +27,26 @@ export function SideMenu({ isOpen, setIsOpen }) {
                 {/* </form> */}
                 <Sidebar.Items>
                   <Sidebar.ItemGroup>
-                    <Sidebar.Item href="/" icon={HiChartPie}>
+                    {/* <Sidebar.Item href="/" icon={HiChartPie}>
                       Dashboard
-                    </Sidebar.Item>
+                    </Sidebar.Item> */}
                     <Sidebar.Item href="/products" icon={HiShoppingBag}>
                       Products
                     </Sidebar.Item>
                     <Sidebar.Item href="/costs" icon={HiCollection}>
                       Costs
                     </Sidebar.Item>
-                    <Sidebar.Item href="/profil" icon={HiUsers}>
-                      Users list
-                    </Sidebar.Item>
+                    {/* <Sidebar.Item href="/profil" icon={HiUsers}>
+                      Profil
+                    </Sidebar.Item> */}
                   </Sidebar.ItemGroup>
                   <Sidebar.ItemGroup>
-                    <Sidebar.Item href="/about" icon={HiClipboard}>
+                    {/* <Sidebar.Item href="/about" icon={HiClipboard}>
                       Api Docs
                     </Sidebar.Item>
                     <Sidebar.Item href="/contact" icon={HiInformationCircle}>
                       Help
-                    </Sidebar.Item>
+                    </Sidebar.Item> */}
                   </Sidebar.ItemGroup>
                 </Sidebar.Items>
               </div>

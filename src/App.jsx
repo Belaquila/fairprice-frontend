@@ -20,6 +20,7 @@ import { useContext } from 'react';
 import SideMenu from './components/Sidemenu';
 import UnitCostListPage from './pages/UnitCostListPage'
 import CreateCostPage from './pages/CreateCostPage'
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/costs/create" element={<IsPrivate><CreateCostPage /></IsPrivate>} />
           <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
           <Route path="/signup" element={<IsAnon><SignupPage /></IsAnon>} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
     
       </AppContainer>

@@ -19,7 +19,7 @@ export function Header() {
       <Navbar.Collapse>
         <Navbar.Link style={{ color: 'var(--secondary-color)' }} href="/" active>Home</Navbar.Link>
         <Navbar.Link style={{ color: 'var(--secondary-color' }} href="/about" active>About</Navbar.Link>
-        <Navbar.Link style={{ color: 'var(--secondary-color)' }} href="/contact" active>Services</Navbar.Link>
+        <Navbar.Link style={{ color: 'var(--secondary-color)' }} href="/" active>Services</Navbar.Link>
         <Navbar.Link style={{ color: 'var(--secondary-color)' }} href="https://www.linkedin.com/in/ahmed-belabdia-a19118128/" active>Contact</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
